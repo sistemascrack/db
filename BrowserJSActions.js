@@ -118,7 +118,7 @@ function isLiked() {
  * Clica no botão de enviar a mensagem no direct.
  */
 function clickOnSendButton() {
-    document.getElementsByClassName("sqdOP yWX7d    y3zKF")[1].click();
+    document.getElementsByClassName("Igw0E     IwRSH      eGOV_  vwCYk  ItkAi ")[0].nextElementSibling.children[0].click();
 }
 
 /**
