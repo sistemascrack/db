@@ -1,3 +1,8 @@
+
+/**
+    AUTOINSTA
+*/
+
 /**
  * Arquivo que contém as funções js a serem realizadas no navegador.
  */
@@ -160,8 +165,17 @@ function clickOnCommentStatusButton() {
  * Verifica se apareceu a tela de login suspeito.
  */
 function checkSuspiciousLogin() {
-    if (document.getElementById("choice_1") != null)
+    if (document.getElementById("choice_1") != null || document.getElementsByClassName("NXVPg Szr5J coreSpriteLock")[0] != undefined)
         return true;
     else
         return false;
+}
+
+function getUserImage(){
+	var src = "";
+	try{
+		return document.getElementsByClassName("_47KiJ")[0].lastElementChild.children[1].children[0].src;
+	}catch(e){
+		return "";
+	}
 }
