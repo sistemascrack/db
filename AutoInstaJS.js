@@ -1,4 +1,5 @@
 
+
 /**
     AUTOINSTA
 */
@@ -102,14 +103,17 @@ function startChat() {
  * Foca no textarea de escrever a mensagem do direct.
  */
 function focusOnTextMessage() {
-    document.getElementsByClassName("Igw0E IwRSH eGOV_ vwCYk ItkAi")[0].focus();
+    document.getElementsByTagName("textarea")[0].focus();
 }
 
 /**
  * Clica no botão de curtir o post.
  */
 function likePost() {
-    document.getElementsByClassName("ltpMr Slqrh")[0].firstElementChild.firstElementChild.click();
+	var arialabel = document.getElementsByClassName("ltpMr Slqrh")[0].firstElementChild.firstElementChild.children[0].children[0].children[0].getAttribute("aria-label");
+	if(arialabel == "Like" || arialabel == "Curtir"){
+			document.getElementsByClassName("ltpMr Slqrh")[0].firstElementChild.firstElementChild.click();
+	}
 }
 
 /**
@@ -144,7 +148,7 @@ function clickOnCommentButton() {
  * Clica no Storie que está na tela, a fim de iniciar sua reprodução.
  */
 function clickOnStorie() {
-    document.getElementsByClassName("_42FBe")[0].click();
+    document.getElementsByClassName("sqdOP  L3NKy     y1rQx cB_4K  ")[0].click();
 }
 
 /**
@@ -165,7 +169,7 @@ function clickOnCommentStatusButton() {
  * Verifica se apareceu a tela de login suspeito.
  */
 function checkSuspiciousLogin() {
-    if (document.getElementById("choice_1") != null || document.getElementsByClassName("NXVPg Szr5J coreSpriteLock")[0] != undefined)
+    if (document.getElementById("choice_1") != null || typeof(document.getElementsByClassName("NXVPg Szr5J coreSpriteLock")[0]) != "undefined")
         return true;
     else
         return false;
@@ -177,5 +181,140 @@ function getUserImage(){
 		return document.getElementsByClassName("_47KiJ")[0].lastElementChild.children[1].children[0].src;
 	}catch(e){
 		return "";
+	}
+}
+
+function clickOnNextToPost(){
+	document.getElementsByClassName('UP43G')[0].click();
+}
+
+function clickOnWriteCaptionPost(){
+	focusOnCaptionPost();
+	document.querySelectorAll('[aria-label ^= "Write a caption"]')[0].click();
+}
+
+function focusOnCaptionPost(){
+	document.querySelectorAll('[aria-label ^= "Write a caption"]')[0].focus();
+}
+
+function clickOnPublish(){
+	document.getElementsByClassName('UP43G')[0].click();
+}
+
+function clickOnFollowers(){
+	document.getElementsByClassName("k9GMp ")[0].children[1].children[0].click();
+}
+
+function getCountOfFollowers(){
+	var qtd = document.getElementsByClassName("k9GMp ")[0].children[1].children[0].children[0].title;
+	qtd = qtd.replace(",","");
+	qtd = qtd.replace(".","");
+	return qtd;
+}
+
+function getCountOfFollowings(){
+	var el = document.getElementsByClassName("k9GMp ")[0].children[2].children[0].children[0];
+	
+	var qtd = el.title;
+	
+	if(qtd == "" || typeof(qtd) == "undefined"){
+		qtd = el.textContent;
+	}
+	
+	qtd = qtd.replace(",","");
+	qtd = qtd.replace(".","");
+	return qtd;
+}
+
+function clickOnFollowings(){
+	document.getElementsByClassName("k9GMp ")[0].children[2].children[0].click();
+}
+
+function getNameOfFollower(indFollower){
+	var namefollower = "";
+	
+	try{
+		namefollower = document.getElementsByClassName("PZuss")[0].children[indFollower].children[0].children[1].children[0].children[0].children[0].children[0].textContent;
+	}catch(e){
+		namefollower = "";
+	}
+	
+	return namefollower;
+}
+
+function windowScroll(value){
+	window.scrollBy(0, value);
+}
+
+function scrollToFollower(indFollower){
+	var el = document.getElementsByClassName("PZuss")[0].children[indFollower];
+	el.scrollIntoView();
+}
+
+function clickOnButtonPost(){
+	document.querySelectorAll('[data-testid ^= "new-post-button"]')[0].click();
+}
+
+function clickOnButtonPost2(){
+	document.getElementsByClassName("q02Nz _0TPg")[0].click();
+}
+
+function getPosterName(){
+	return document.getElementsByClassName("sqdOP yWX7d     _8A5w5   ZIAjV ")[0].textContent;
+}
+
+function clickToLoadMoreComments(){
+	document.getElementsByClassName('glyphsSpriteCircle_add__outline__24__grey_9 u-__7')[0].click();
+}
+
+function clickOnPoster(){
+	return document.getElementsByClassName("sqdOP yWX7d     _8A5w5   ZIAjV ")[0].click();
+}
+
+
+function followInPost(){
+	var elFollowPost = document.getElementsByClassName("PQo_0 RqtMr")[0].lastElementChild.lastElementChild;
+	if(elFollowPost.textContent == "Follow" || elFollowPost.textContent == "Seguir"){
+		elFollowPost.click();
+	}
+}
+
+function getCountOfComments(){
+	
+	var qtdComments = "";
+	
+	try{
+		
+	var qtdInDiv = document.getElementsByClassName("Mr508 ").length;
+	qtdComments = ""+qtdInDiv;
+	qtdComments = qtdComments.replace(",","");
+	qtdComments = qtdComments.replace(".","");
+		
+	}catch(e){
+	
+	}
+	
+	return qtdComments;
+}
+
+function getCommenterName(indCommenter){
+	
+	var commenterName = "";
+	
+	try{
+		commenterName = document.getElementsByClassName("Mr508 ")[indCommenter].children[0].children[0].children[0].children[0].children[1].children[0].children[0].children[0].textContent;
+	}catch(e){
+	}
+	
+	return commenterName;
+}
+
+function scrollToCommenter(indCommenter){
+	var elView = "";
+	var elListComments = "";
+	
+	try{
+		document.getElementsByClassName("Mr508 ")[indCommenter].scrollIntoView();
+	}catch(e){
 	}
 }
