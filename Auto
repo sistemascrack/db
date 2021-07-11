@@ -157,7 +157,7 @@ function checkWhatsAppConnection() {
 	try {
 
 
-		if (document.getElementsByClassName("_1R3Un").length > 0) {
+		if (document.getElementsByClassName("_1lPgH").length > 0) {
 			userIsConnected = true;
 		}else{
 			userIsConnected = false;
@@ -627,7 +627,7 @@ function getCountContactsOfGroups(groupName) {
 function sendMessageToContact(chatid, message, isReturn) {
 	/*try {
 		
-		console.log("mensagem: "+message);
+		console.log("mensagem: "+msgText);
 		
 		window.getContact = (id) => {
 			return Store.WapQuery.queryExist(id);
@@ -666,7 +666,8 @@ function sendMessageToContact(chatid, message, isReturn) {
 	} catch (e) {
 		if (isReturn === true) {
 			CefInjectedJavascript.resultado(false);
-		}*/
+		}
+	return false;*/
 		try {
 				var idUser = new window.Store.UserConstructor(chatid, {
 					intentionallyUsePrivateConstructor: true
@@ -678,10 +679,12 @@ function sendMessageToContact(chatid, message, isReturn) {
 				console.log("Executou função de envio");
 		} catch (e) {
 				console.log("Não executou função de envio");
+				CefInjectedJavascript.resultado(false);
 				return false;
 		}
 
 }
+			
 
 function getAllGroupsContacts(unknownNotAllowed) {
 
@@ -776,7 +779,7 @@ function WMBSP_GETPROFILEPICTUREFROMCONTACT(id) {
 	try {
 		var urlImage = "";
 
-		urlImage = document.getElementsByClassName("_2goTk _1Jdop _3Whw5")[0].src;
+		urlImage = document.getElementsByClassName("_8hzr9 M0JmA i0jNr")[0].src;
 
 		return urlImage;
 	} catch (e) {
