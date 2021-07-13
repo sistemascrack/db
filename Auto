@@ -1,11 +1,3 @@
-
-
-/**
-    ZAPMAX
-*/
-
-// ============================ MyCustomScript ========================================
-
 //essa é a função que capta a mensagem que foi pegada do usuário
 function startAutoReplay() {
 	debugger
@@ -157,10 +149,29 @@ function checkWhatsAppConnection() {
 	try {
 
 
-		if (document.getElementsByClassName("_1lPgH").length > 0) {
-			userIsConnected = true;
-		}else{
-			userIsConnected = false;
+		if (typeof document.getElementsByClassName("J3VFH")[0] !== "undefined") {
+			if (document.getElementsByClassName("J3VFH")[0].outerText === "Search or start new chat") {
+				userIsConnected = true;
+			}
+
+		if (typeof document.getElementsByClassName("landing-landing-title VeVN5")[0] === "undefined") {
+
+			if (typeof document.getElementsByClassName("J3VFH")[0] !== "undefined" || document.getElementsByClassName("_1QMFu")[0] === null) {
+				userIsConnected = true;
+			}
+
+		} else {
+
+			if (typeof document.getElementsByClassName("landing-title VeVN5")[0] !== "undefined") {
+
+				text = document.getElementsByClassName("landing-title VeVN5")[0].outerText;
+
+				if (text == "Para usar o WhatsApp no seu computador:" || text == "To use WhatsApp on your computer:") {
+					userIsConnected = false;
+				}
+			}
+
+
 		}
 
 	} catch (e) {
@@ -261,9 +272,9 @@ function WMBSP_CheckWhatsappAccount(id) {
 function getMyNumber() {
 
 	try {
-		return Store.Conn.__x_wid.user;
+		return Store.Conn.__x_me.user;
 	} catch (e) {
-		return "Carregando";
+		return "Número";
 	}
 
 }
@@ -624,8 +635,8 @@ function getCountContactsOfGroups(groupName) {
 	return qtdContactsGP;
 
 }
-function sendMessageToContact(chatid, message, isReturn) {
-	/*try {
+function sendMessageToContact(id, msgText, isReturn) {
+	try {
 		
 		console.log("mensagem: "+msgText);
 		
@@ -667,24 +678,11 @@ function sendMessageToContact(chatid, message, isReturn) {
 		if (isReturn === true) {
 			CefInjectedJavascript.resultado(false);
 		}
-	return false;*/
-		try {
-				var idUser = new window.Store.UserConstructor(chatid, {
-					intentionallyUsePrivateConstructor: true
-				});
-				return Store.Chat.find(idUser).then((chatid) => {
-					var mc = new Store.SendTextMsgToChat(chatid, message);
-					return true;
-				}); 
-				console.log("Executou função de envio");
-		} catch (e) {
-				console.log("Não executou função de envio");
-				CefInjectedJavascript.resultado(false);
-				return false;
-		}
+	}
+
+	return false;
 
 }
-			
 
 function getAllGroupsContacts(unknownNotAllowed) {
 
@@ -761,25 +759,23 @@ function getCountContactsAllGroups() {
 function WMBSP_GETPROFILEPICTUREFROMID(id) {
 
 	try {
-		var objContact = [];
+		var urlImage = "";
 
-			var objContact = window.Store.ProfilePicThumb.find(id);
+		urlImage = Store.ProfilePicThumb._index[id].__x_eurl;
 
-			return objContact._value.__x_eurl;
-			
+		return urlImage;
 	} catch (e) {
 		return "";
 	}
 
 }
 
-// TALVEZ ARRUMAR FUTURAMENTE
 function WMBSP_GETPROFILEPICTUREFROMCONTACT(id) {
 
 	try {
 		var urlImage = "";
 
-		urlImage = document.getElementsByClassName("_8hzr9 M0JmA i0jNr")[0].src;
+		urlImage = Store.Contact._index[id].__x_profilePicThumb.__x_eurl;
 
 		return urlImage;
 	} catch (e) {
