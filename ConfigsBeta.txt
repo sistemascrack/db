@@ -4,7 +4,7 @@ http://ultrabotwa.com/wa/php/cliente/cliente_sessao.php?serial=;
 http://ultrabotwa.com/wa/php/cliente/cliente_acesso.php?;
 https://ultrabotwa.com/update/uploads/UltraBot.png;
 https://ultrabotwa.com/update/uploads/ultraicone.ico;
-ULTRABOT WA;
+CLIQUEBOT;
 2.0.3.5;
 http://ultrabotwa.com/wa/php/cliente/script/scripts.php?arquivo=;
 http://ultrabotwa.com/wa/php/cliente/cliente_encerrar.php?serial=;
